@@ -40,7 +40,7 @@ def profile(request):
   return Response(serializer.data)
 
 
-ddef request_pass(request):
+def request_pass(request):
   TOKEN = "6125230376:AAGi7qfothkdpDGwwy7nB9x8VieXwzN9yNQ"
   # url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
   alumni = Alumni.objects.get(user_ptr_id=request.user.id)
