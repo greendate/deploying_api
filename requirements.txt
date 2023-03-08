@@ -1,0 +1,6 @@
+pip install django
+sudo apt install python3.8-venv
+pyenv virtualenv django-rest
+pyenv local django-rest
+pip install djangorestframework
+pip install django-rest-knox
