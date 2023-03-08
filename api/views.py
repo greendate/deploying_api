@@ -7,7 +7,7 @@ from .serializers import RegisterSerializer
 from rest_framework.authentication import SessionAuthentication
 from rest_framework import generics
 from knox.views import LoginView as KnoxLoginView
-import requests 
+import urllib 
 
 from .serializers import AlumniSerializer
 from .models import Alumni
@@ -40,13 +40,14 @@ def profile(request):
   return Response(serializer.data)
 
 
-def request_pass(request):
+ddef request_pass(request):
   TOKEN = "6125230376:AAGi7qfothkdpDGwwy7nB9x8VieXwzN9yNQ"
-  url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
+  # url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
   alumni = Alumni.objects.get(user_ptr_id=request.user.id)
   message = f"{alumni.name} requested a pass."
   chat_id = -1001525464247
-  url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}"
-  requests.get(url).json()
+  url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}".replace(" ", "%20")
+  urllib.request.urlopen(url)
   
   return redirect('/')
+
