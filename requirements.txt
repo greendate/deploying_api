@@ -2,4 +2,3 @@ django
 djangorestframework
 django-rest-knox
 requests
-sqlite3
