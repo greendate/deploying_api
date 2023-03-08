@@ -47,6 +47,6 @@ def request_pass(request):
   message = f"{alumni.name} requested a pass."
   chat_id = -1001525464247
   url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}"
-  # print(requests.get(url).json())
+  requests.get(url).json()
   
   return redirect('/')
